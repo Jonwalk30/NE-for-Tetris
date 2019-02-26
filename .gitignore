@@ -1,0 +1,12 @@
+html/
+desktop/
+gradle/
+build.gradle
+*.iml
+*.bat
+*.class
+gradlew
+settings.gradle
+local.properties
+/core/out/
+/core/build.gradle
