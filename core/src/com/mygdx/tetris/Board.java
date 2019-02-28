@@ -127,7 +127,7 @@ public class Board {
     public ArrayList<Integer> fullLines() {
         ArrayList<Integer> fullLines = new ArrayList<Integer>();
 
-        for (int y = 0; y < height; y++) {
+        for (int y = height-1; y >= 0; y--) {
             int fullLineCounter = 0;
             for (int x = 0; x < width; x++) {
                 for (Position p : takenPositions()) {
@@ -143,8 +143,7 @@ public class Board {
         return fullLines;
     }
 
-    // TODO: REMOVE TETRIMINOS THAT DONT HAVE ANY TILES LEFT
-    // TODO: Move the whole tetrimino down
+    // TODO: Deal with the fact that I'm removing an extra line sometimes
     public void removeLine(int y) {
         for (Tetrimino t : passiveTetrimini) {
             for (Position p : t.getActualTileLocationsOnBoard()) {
@@ -205,8 +204,6 @@ public class Board {
         activeTetrimino.setPosition(new Position(xPos, yPos));
 
         upcomingTetrimini.add(generateRandomTetrimino());
-
-        System.out.println(activeTetrimino.getType());
 
         for (Position p1 : activeTetrimino.getActualTileLocationsOnBoard()) {
             for (Position p2 : takenPositions()) {

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
 import java.util.ArrayList;
@@ -79,10 +80,10 @@ public class Tetris extends ApplicationAdapter {
 
 		batch.end();
 
-		if (TimeUtils.timeSinceNanos(startTime) > timeBetweenSteps) {
-//            if (timeBetweenEnemyMoves > 500000000) {
-//                timeBetweenEnemyMoves = timeBetweenEnemyMoves - 10000000;
-//            }
+		if (TimeUtils.timeSinceNanos(startTime) > timeBetweenSteps/1.5) {
+            if (timeBetweenSteps > 100000000) {
+				timeBetweenSteps = timeBetweenSteps - 1000000;
+            }
 			// TODO: A more advanced menu system needed
 			if(!board.step()) {
 				dispose();
@@ -91,7 +92,6 @@ public class Tetris extends ApplicationAdapter {
 
 			startTime = TimeUtils.nanoTime();
 		}
-
 		for (int y : board.fullLines()) {
 			board.removeLine(y);
 		}

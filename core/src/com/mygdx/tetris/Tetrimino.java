@@ -1,7 +1,6 @@
 package com.mygdx.tetris;
 
 import com.badlogic.gdx.graphics.Texture;
-import javafx.geometry.Pos;
 
 import java.util.ArrayList;
 
